@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=../vendor/symfony/routing/Loader/schema/routing.schema.json
+
+# This file is the entry point to configure the routes of your app.
+# Methods with the #[Route] attribute are automatically imported.
+# See also https://symfony.com/doc/current/routing.html
+
+# To list all registered routes, run the following command:
+#   bin/console debug:router
+
+controllers:
+    resource: routing.controllers
+# config/routes.yaml
+# Fallback controller only runs if json_login does not handle the request (e.g. wrong Content-Type).
+# Successful login is still handled by security.yaml json_login + Lexik success_handler.
+api_login:
+    path: /api/login
+    controller: App\Controller\AuthController::apiLogin
+    methods: [POST]
+
+api_platform:
+    resource: .
+    type: api_platform
+    prefix: /api

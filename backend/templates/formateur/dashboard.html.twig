@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Dashboard Formateur</title>
+
+<style>
+
+body{
+font-family: Arial;
+background:#f4f6f9;
+padding:40px;
+}
+
+.cards{
+display:flex;
+gap:30px;
+}
+
+.card{
+background:white;
+padding:30px;
+border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+width:200px;
+text-align:center;
+}
+
+.card h2{
+font-size:40px;
+margin:0;
+}
+
+.card p{
+color:gray;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>👨‍🏫 Dashboard Formateur</h1>
+
+<div class="cards">
+
+<div class="card">
+<h2>{{ cours }}</h2>
+<p>Mes Cours</p>
+</div>
+
+<div class="card">
+<h2>{{ lecons }}</h2>
+<p>Mes Leçons</p>
+</div>
+
+<div class="card">
+<h2>{{ quiz }}</h2>
+<p>Mes Quiz</p>
+</div>
+
+</div>
+
+</body>
+</html>
