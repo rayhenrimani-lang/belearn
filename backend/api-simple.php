@@ -7,7 +7,7 @@ header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type');
 
 // Handle preflight requests
-if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit(0);
 }
 
@@ -26,7 +26,7 @@ try {
 }
 
 // Get the request path
-$path = $_SERVER['REQUEST_URI'];
+$path = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '';
 $path = str_replace('/api', '', $path);
 $path = explode('?', $path)[0]; // Remove query parameters
 

@@ -13,7 +13,7 @@ if ($themes) {
     $themesData = json_decode($themes, true);
     echo "Found " . count($themesData) . " themes\n";
     if (count($themesData) > 0) {
-        echo "First theme: " . $themesData[0]['nom'] . "\n";
+        echo "First theme: " . htmlspecialchars($themesData[0]['nom'], ENT_QUOTES, 'UTF-8') . "\n";
     }
 } else {
     echo "ERROR: Themes API failed\n";
@@ -29,7 +29,7 @@ if ($courses) {
     $coursesData = json_decode($courses, true);
     echo "Found " . count($coursesData) . " courses\n";
     if (count($coursesData) > 0) {
-        echo "First course: " . $coursesData[0]['titre'] . "\n";
+echo "First course: " . htmlspecialchars($coursesData[0]['titre'], ENT_QUOTES, 'UTF-8') . "\n";
     }
 } else {
     echo "ERROR: Courses API failed\n";
@@ -45,7 +45,7 @@ if ($lessons) {
     $lessonsData = json_decode($lessons, true);
     echo "Found " . count($lessonsData) . " lessons\n";
     if (count($lessonsData) > 0) {
-        echo "First lesson: " . $lessonsData[0]['titre'] . "\n";
+echo "First lesson: " . htmlspecialchars($lessonsData[0]['titre'], ENT_QUOTES, 'UTF-8') . "\n";
     }
 } else {
     echo "ERROR: Lessons API failed\n";

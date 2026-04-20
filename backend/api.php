@@ -7,7 +7,7 @@ header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type');
 
 // Handle preflight requests
-if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit(0);
 }
 
@@ -26,7 +26,7 @@ try {
 }
 
 // Get the request URI and parse the path
-$request_uri = $_SERVER['REQUEST_URI'];
+$request_uri = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '';
 $path = parse_url($request_uri, PHP_URL_PATH);
 
 // Remove /api prefix if present
@@ -35,7 +35,7 @@ $path = str_replace('/api', '', $path);
 // Route the request
 switch ($path) {
     case '/themes':
-        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'GET') {
             try {
                 $sql = "SELECT id, nom, description, image_url, date_creation FROM theme ORDER BY date_creation DESC";
                 $stmt = $pdo->prepare($sql);

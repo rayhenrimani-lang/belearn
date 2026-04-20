@@ -12,7 +12,7 @@ class OpenAIService
     public function __construct(HttpClientInterface $client)
     {
         $this->client = $client;
-        $this->apiKey = $_ENV['OPENAI_API_KEY'];
+        $this->apiKey = isset($_ENV['OPENAI_API_KEY']) ? $_ENV['OPENAI_API_KEY'] : null;
     }
 
     public function generateQuiz($theme, $topic, $level)
