@@ -45,4 +45,4 @@ if ($lessons) {
 echo "\n🎯 API Testing Complete!\n";
 echo "📱 You can now test the React Native app\n";
 echo "🔗 Make sure your Symfony API is running on port 8001\n";
-echo "🌐 API Base URL: " . $baseUrl . "\n";
+echo "🌐 API Base URL: " . htmlspecialchars($baseUrl, ENT_QUOTES, 'UTF-8') . "\n";
