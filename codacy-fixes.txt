@@ -1,0 +1,470 @@
+diff --git a/beLearn/src/components/microlearn/PrimaryButton.tsx b/beLearn/src/components/microlearn/PrimaryButton.tsx
+--- a/beLearn/src/components/microlearn/PrimaryButton.tsx
++++ b/beLearn/src/components/microlearn/PrimaryButton.tsx
+@@ -38,1 +38,1 @@
+-        (disabled || loading) && styles.disabled,
++        (disabled ?? loading) && styles.disabled,
+diff --git a/beLearn/app/login.tsx b/beLearn/app/login.tsx
+--- a/beLearn/app/login.tsx
++++ b/beLearn/app/login.tsx
+@@ -45,1 +45,1 @@
+-if(res && res.token){
++if(res?.token){
+diff --git a/beLearn/app/admin/addUser.tsx b/beLearn/app/admin/addUser.tsx
+--- a/beLearn/app/admin/addUser.tsx
++++ b/beLearn/app/admin/addUser.tsx
+@@ -145,1 +145,1 @@
+-              onPress={() => setRole(opt.value)}>
++              onPress={() => { setRole(opt.value); }}>
+diff --git a/beLearn/app/register-complete.tsx b/beLearn/app/register-complete.tsx
+--- a/beLearn/app/register-complete.tsx
++++ b/beLearn/app/register-complete.tsx
+@@ -88,1 +88,1 @@
+-    } catch (error: any) {
++    } catch (error: unknown) {
+@@ -144,1 +144,1 @@
+-              onChangeText={(value) => updateFormData('prenom', value)}
++              onChangeText={(value) => { updateFormData('prenom', value); }}
+@@ -157,1 +157,1 @@
+-              onChangeText={(value) => updateFormData('password', value)}
++              onChangeText={(value) => { updateFormData('password', value); }}
+@@ -161,1 +161,1 @@
+-              onPress={() => setShowPassword(!showPassword)}
++              onPress={() => { setShowPassword(!showPassword); }}
+@@ -180,1 +180,1 @@
+-              onChangeText={(value) => updateFormData('confirmPassword', value)}
++              onChangeText={(value) => { updateFormData('confirmPassword', value); }}
+diff --git a/backend/README-SETUP.md b/backend/README-SETUP.md
+--- a/backend/README-SETUP.md
++++ b/backend/README-SETUP.md
+@@ -59,1 +59,1 @@
+-### **Navigation Test**
++### **Navigation Test**
+
+@@ -60,1 +60,1 @@
+-1. Open app â Click "ð Test Navigation"
++
+1. Open app â Click "ð Test Navigation"
+@@ -64,1 +64,1 @@
+-### **Complete Flow Test**
++### **Complete Flow Test**
+
+@@ -65,1 +65,1 @@
+-1. **HomeScreen**: Browse themes
++
+1. **HomeScreen**: Browse themes
+@@ -113,1 +113,1 @@
+-### **API Base URL**
++### **API Base URL**
+
+@@ -119,1 +119,1 @@
+-### **Database Connection**
++### **Database Connection**
+
+@@ -127,1 +127,1 @@
+-### **API Not Working**
++### **API Not Working**
+
+@@ -128,1 +128,1 @@
+-1. Ensure Symfony server is running on port 8001
++
+1. Ensure Symfony server is running on port 8001
+@@ -132,1 +132,1 @@
+-### **Import Path Errors**
++### **Import Path Errors**
+
+@@ -133,1 +133,1 @@
+-1. Check all imports use correct paths:
++
+1. Check all imports use correct paths:
+@@ -137,1 +137,1 @@
+-### **YouTube Player Issues**
++### **YouTube Player Issues**
+
+@@ -138,1 +138,1 @@
+-1. Ensure `react-native-youtube-iframe` is installed
++
+1. Ensure `react-native-youtube-iframe` is installed
+@@ -142,1 +142,1 @@
+-### **Navigation Issues**
++### **Navigation Issues**
+
+@@ -143,1 +143,1 @@
+-1. Verify all screens are registered in `_layout.tsx`
++
+1. Verify all screens are registered in `_layout.tsx`
+@@ -150,1 +150,1 @@
+-- **3 Themes**: Web Development, Mobile Development, UI/UX Design
++
+- **3 Themes**: Web Development, Mobile Development, UI/UX Design
+@@ -166,1 +166,1 @@
+-## ð Ready to Use!
++## ð Ready to Use
+@@ -169,1 +169,1 @@
+-- **Theme browsing**
++
+- **Theme browsing**
+diff --git a/beLearn/app/screens/NavigationTest.tsx b/beLearn/app/screens/NavigationTest.tsx
+--- a/beLearn/app/screens/NavigationTest.tsx
++++ b/beLearn/app/screens/NavigationTest.tsx
+@@ -54,1 +54,1 @@
+-                <Ionicons name={screen.icon as any} size={24} color={colors.textWhite} />
++                <Ionicons name={screen.icon as unknown} size={24} color={colors.textWhite} />
+diff --git a/beLearn/app/register-modern.tsx b/beLearn/app/register-modern.tsx
+--- a/beLearn/app/register-modern.tsx
++++ b/beLearn/app/register-modern.tsx
+@@ -85,1 +85,1 @@
+-    } catch (error: any) {
++    } catch (error: unknown) {
+@@ -131,1 +131,1 @@
+-              onChangeText={(value) => updateFormData('fullName', value)}
++              onChangeText={(value) => { updateFormData('fullName', value); }}
+@@ -144,1 +144,1 @@
+-              onChangeText={(value) => updateFormData('email', value)}
++              onChangeText={(value) => { updateFormData('email', value); }}
+@@ -158,1 +158,1 @@
+-              onChangeText={(value) => updateFormData('phone', value)}
++              onChangeText={(value) => { updateFormData('phone', value); }}
+@@ -166,1 +166,1 @@
+-              onPress={() => setAcceptTerms(!acceptTerms)}
++              onPress={() => { setAcceptTerms(!acceptTerms); }}
+diff --git a/beLearn/src/context/AuthContext.tsx b/beLearn/src/context/AuthContext.tsx
+--- a/beLearn/src/context/AuthContext.tsx
++++ b/beLearn/src/context/AuthContext.tsx
+@@ -23,1 +23,1 @@
+-type AuthContextValue = {
++interface AuthContextValue {
+diff --git a/beLearn/src/components/microlearn/design.ts b/beLearn/src/components/microlearn/design.ts
+--- a/beLearn/src/components/microlearn/design.ts
++++ b/beLearn/src/components/microlearn/design.ts
+@@ -13,1 +13,1 @@
+-  return THEME_CARD_ACCENTS[index % THEME_CARD_ACCENTS.length]!;
++  return THEME_CARD_ACCENTS[index % THEME_CARD_ACCENTS.length];
+diff --git a/beLearn/app/screens/LessonsScreen.tsx b/beLearn/app/screens/LessonsScreen.tsx
+--- a/beLearn/app/screens/LessonsScreen.tsx
++++ b/beLearn/app/screens/LessonsScreen.tsx
+@@ -50,1 +50,1 @@
+-      const initialProgress: { [key: number]: number } = {};
++      const initialProgress: Record<number, number> = {};
+@@ -236,1 +236,1 @@
+-            <TouchableOpacity onPress={() => setVideoModalVisible(false)} hitSlop={12}>
++            <TouchableOpacity onPress={() => { setVideoModalVisible(false); }} hitSlop={12}>
+diff --git a/beLearn/app/login-modern.tsx b/beLearn/app/login-modern.tsx
+--- a/beLearn/app/login-modern.tsx
++++ b/beLearn/app/login-modern.tsx
+@@ -51,1 +51,1 @@
+-    } catch (error: any) {
++    } catch (error: unknown) {
+@@ -92,1 +92,1 @@
+-              onChangeText={(value) => updateFormData('email', value)}
++              onChangeText={(value) => { updateFormData('email', value); }}
+@@ -106,1 +106,1 @@
+-              onChangeText={(value) => updateFormData('password', value)}
++              onChangeText={(value) => { updateFormData('password', value); }}
+@@ -110,1 +110,1 @@
+-              onPress={() => setShowPassword(!showPassword)}
++              onPress={() => { setShowPassword(!showPassword); }}
+@@ -125,1 +125,1 @@
+-                onPress={() => setRememberMe(!rememberMe)}
++                onPress={() => { setRememberMe(!rememberMe); }}
+diff --git a/beLearn/components/ui/collapsible.tsx b/beLearn/components/ui/collapsible.tsx
+--- a/beLearn/components/ui/collapsible.tsx
++++ b/beLearn/components/ui/collapsible.tsx
+@@ -18,1 +18,1 @@
+-        onPress={() => setIsOpen((value) => !value)}
++        onPress={() => { setIsOpen((value) => !value); }}
+diff --git a/beLearn/src/services/utilisateursApi.ts b/beLearn/src/services/utilisateursApi.ts
+--- a/beLearn/src/services/utilisateursApi.ts
++++ b/beLearn/src/services/utilisateursApi.ts
+@@ -3,1 +3,1 @@
+-export type UtilisateurApi = {
++export interface UtilisateurApi {
+@@ -65,1 +65,1 @@
+-export type CreateUtilisateurPayload = {
++export interface CreateUtilisateurPayload {
+@@ -94,1 +94,1 @@
+-      (data as { 'hydra:description'?: string })?.['hydra:description'] ||
++      (data as { 'hydra:description'?: string })['hydra:description'] ||
+diff --git a/beLearn/src/utils/displayName.ts b/beLearn/src/utils/displayName.ts
+--- a/beLearn/src/utils/displayName.ts
++++ b/beLearn/src/utils/displayName.ts
+@@ -2,1 +2,1 @@
+-  if (!email || !email.includes('@')) {
++  if (!email?.includes('@')) {
+diff --git a/beLearn/src/services/authApi.ts b/beLearn/src/services/authApi.ts
+--- a/beLearn/src/services/authApi.ts
++++ b/beLearn/src/services/authApi.ts
+@@ -3,1 +3,1 @@
+-type LoginSuccess = { token?: string };
++interface LoginSuccess { token?: string }
+@@ -4,1 +4,1 @@
+-type LoginErrorBody = { message?: string; error?: string };
++interface LoginErrorBody { message?: string; error?: string }
+@@ -45,1 +45,1 @@
+-      data?.error ||
++      (data?.error ??
+@@ -46,1 +46,1 @@
+-      data?.message ||
++      (data?.message ??
+@@ -47,1 +47,1 @@
+-      data?.detail ||
++      data?.detail ??
+@@ -62,1 +62,1 @@
+-export type UserRow = {
++export interface UserRow {
+@@ -91,1 +91,1 @@
+-export type CourseRow = {
++export interface CourseRow {
+diff --git a/beLearn/src/screens/microlearn/ProfileBody.tsx b/beLearn/src/screens/microlearn/ProfileBody.tsx
+--- a/beLearn/src/screens/microlearn/ProfileBody.tsx
++++ b/beLearn/src/screens/microlearn/ProfileBody.tsx
+@@ -15,1 +15,1 @@
+-export type ProfileBodyProps = {
++export interface ProfileBodyProps {
+diff --git a/beLearn/app/home.tsx b/beLearn/app/home.tsx
+--- a/beLearn/app/home.tsx
++++ b/beLearn/app/home.tsx
+@@ -93,1 +93,1 @@
+-  const renderCategoryCard = ({ item }: any) => (
++  const renderCategoryCard = ({ item }: unknown) => (
+@@ -128,1 +128,1 @@
+-      onPress={() => handleSearch(suggestion)}
++      onPress={() => { handleSearch(suggestion); }}
+@@ -215,1 +215,1 @@
+-                  onPress={() => setSelectedCategory(category)}
++                  onPress={() => { setSelectedCategory(category); }}
+diff --git a/beLearn/app/verification.tsx b/beLearn/app/verification.tsx
+--- a/beLearn/app/verification.tsx
++++ b/beLearn/app/verification.tsx
+@@ -37,1 +37,1 @@
+-      const timer = setTimeout(() => setTimeLeft(timeLeft - 1), 1000);
++      const timer = setTimeout(() => { setTimeLeft(timeLeft - 1); }, 1000);
+@@ -38,1 +38,1 @@
+-      return () => clearTimeout(timer);
++      return () => { clearTimeout(timer); };
+diff --git a/backend/PFE-DEPLOYMENT-GUIDE.md b/backend/PFE-DEPLOYMENT-GUIDE.md
+--- a/backend/PFE-DEPLOYMENT-GUIDE.md
++++ b/backend/PFE-DEPLOYMENT-GUIDE.md
+@@ -3,1 +3,1 @@
+-## ð Project Overview
++## ð Project Overview
+
+@@ -6,1 +6,1 @@
+-### ðï¸ Architecture
++### ðï¸ Architecture
+
+@@ -7,1 +7,1 @@
+-- **Backend**: Symfony API with MySQL Database
++
+- **Backend**: Symfony API with MySQL Database
+@@ -15,1 +15,1 @@
+-### 1. **Backend Deployment**
++### 1. **Backend Deployment**
+
+@@ -24,1 +24,1 @@
+-### 2. **Frontend Deployment**
++### 2. **Frontend Deployment**
+
+@@ -37,1 +37,1 @@
+-### **Development URLs**
++### **Development URLs**
+
+@@ -38,1 +38,1 @@
+-- **Frontend**: http://localhost:8085
++
+- **Frontend**: http://localhost:8085
+@@ -39,1 +39,1 @@
+-- **Backend API**: http://localhost:8001/api
++- **Backend API**: <http://localhost:8001/api>
+@@ -42,1 +42,1 @@
+-### **Mobile Access**
++### **Mobile Access**
+
+@@ -43,1 +43,1 @@
+-- **Android**: http://192.168.61.185:8085
++
+- **Android**: http://192.168.61.185:8085
+@@ -44,1 +44,1 @@
+-- **iOS**: http://192.168.61.185:8085
++- **iOS**: <http://192.168.61.185:8085>
+@@ -45,1 +45,1 @@
+-- **API for Mobile**: http://192.168.61.185:8001/api
++- **API for Mobile**: <http://192.168.61.185:8001/api>
+@@ -58,1 +58,1 @@
+-### **Sample Responses**
++### **Sample Responses**
+
+@@ -101,1 +101,1 @@
+-### **Existing Tables Used**
++### **Existing Tables Used**
+
+@@ -135,1 +135,1 @@
+-### **Sample Data**
++### **Sample Data**
+
+@@ -146,1 +146,1 @@
+-### **â Implemented Features**
++### **â Implemented Features**
+
+@@ -147,1 +147,1 @@
+-- **Theme Browser**: Modern card-based UI
++
+- **Theme Browser**: Modern card-based UI
+@@ -156,1 +156,1 @@
+-### **ð¨ UI Components**
++### **ð¨ UI Components**
+
+@@ -157,1 +157,1 @@
+-- **Cards**: Shadow effects, rounded corners
++
+- **Cards**: Shadow effects, rounded corners
+@@ -167,1 +167,1 @@
+-### **Backend Production**
++### **Backend Production**
+
+@@ -178,1 +178,1 @@
+-### **Frontend Production**
++### **Frontend Production**
+
+@@ -197,1 +197,1 @@
+-### **Pre-Deployment Tests**
++### **Pre-Deployment Tests**
+
+@@ -198,1 +198,1 @@
+-- [ ] API server responds correctly
++
+- [ ] API server responds correctly
+@@ -206,1 +206,1 @@
+-### **Manual Testing Steps**
++### **Manual Testing Steps**
+
+@@ -207,1 +207,1 @@
+-1. **Launch App**: Open http://localhost:8085
++1. **Launch App**: Open <http://localhost:8085>
+@@ -236,1 +236,1 @@
+-### **Issue**: API not responding
++### **Issue**: API not responding
+
+@@ -239,1 +239,1 @@
+-### **Issue**: Import path errors
++### **Issue**: Import path errors
+
+@@ -242,1 +242,1 @@
+-### **Issue**: YouTube videos not playing
++### **Issue**: YouTube videos not playing
+
+@@ -245,1 +245,1 @@
+-### **Issue**: CORS errors
++### **Issue**: CORS errors
+
+@@ -252,1 +252,1 @@
+-### **Quick Commands**
++### **Quick Commands**
+
+@@ -264,1 +264,1 @@
+-### **Debug Mode**
++### **Debug Mode**
+
+@@ -265,1 +265,1 @@
+-- **Frontend**: Press `j` in Expo for debugger
++
+- **Frontend**: Press `j` in Expo for debugger
+@@ -273,1 +273,1 @@
+-### **â Requirements Met**
++### **â Requirements Met**
+
+@@ -274,1 +274,1 @@
+-- [x] Connected to existing database
++
+- [x] Connected to existing database
+@@ -282,1 +282,1 @@
+-### **ð Performance Metrics**
++### **ð Performance Metrics**
+
+@@ -283,1 +283,1 @@
+-- **Load Time**: < 3 seconds
++
+- **Load Time**: < 3 seconds
+@@ -292,1 +292,1 @@
+-### **ð PFE Status: COMPLETE**
++### **ð PFE Status: COMPLETE**
+
+@@ -295,1 +295,1 @@
+-### **ð Ready for Presentation**
++### **ð Ready for Presentation**
+
+@@ -296,1 +296,1 @@
+-- Working demo available
++
+- Working demo available
+@@ -302,1 +302,1 @@
+-### **ð± Deployment Ready**
++### **ð± Deployment Ready**
+
+@@ -303,1 +303,1 @@
+-- Backend API server functional
++
+- Backend API server functional
+diff --git a/beLearn/src/screens/ProfileTabScreen.tsx b/beLearn/src/screens/ProfileTabScreen.tsx
+--- a/beLearn/src/screens/ProfileTabScreen.tsx
++++ b/beLearn/src/screens/ProfileTabScreen.tsx
+@@ -15,1 +15,1 @@
+-        Alert.alert('Modifier le profil', 'FonctionnalitÃ© Ã  venir.')
++        { Alert.alert('Modifier le profil', 'FonctionnalitÃ© Ã  venir.'); }
+diff --git a/beLearn/src/components/microlearn/SurfaceCard.tsx b/beLearn/src/components/microlearn/SurfaceCard.tsx
+--- a/beLearn/src/components/microlearn/SurfaceCard.tsx
++++ b/beLearn/src/components/microlearn/SurfaceCard.tsx
+@@ -5,1 +5,1 @@
+-type Props = {
++interface Props {
+diff --git a/beLearn/src/services/api.ts b/beLearn/src/services/api.ts
+--- a/beLearn/src/services/api.ts
++++ b/beLearn/src/services/api.ts
+@@ -71,1 +71,1 @@
+-export type Theme = {
++export interface Theme {
+@@ -78,1 +78,1 @@
+-export type Course = {
++export interface Course {
+diff --git a/beLearn/app/lessons.tsx b/beLearn/app/lessons.tsx
+--- a/beLearn/app/lessons.tsx
++++ b/beLearn/app/lessons.tsx
+@@ -11,1 +11,1 @@
+-    loadLessons();
++    void loadLessons();
+diff --git a/beLearn/src/components/StarRating.tsx b/beLearn/src/components/StarRating.tsx
+--- a/beLearn/src/components/StarRating.tsx
++++ b/beLearn/src/components/StarRating.tsx
+@@ -6,1 +6,1 @@
+-type Props = {
++interface Props {
+diff --git a/beLearn/app/admin/editUser.tsx b/beLearn/app/admin/editUser.tsx
+--- a/beLearn/app/admin/editUser.tsx
++++ b/beLearn/app/admin/editUser.tsx
+@@ -183,1 +183,1 @@
+-              onPress={() => setRole(opt.value)}>
++              onPress={() => { setRole(opt.value); }}>
+diff --git a/beLearn/src/components/SearchBar.tsx b/beLearn/src/components/SearchBar.tsx
+--- a/beLearn/src/components/SearchBar.tsx
++++ b/beLearn/src/components/SearchBar.tsx
+@@ -6,1 +6,1 @@
+-type Props = {
++interface Props {
+diff --git a/beLearn/src/navigation/types.ts b/beLearn/src/navigation/types.ts
+--- a/beLearn/src/navigation/types.ts
++++ b/beLearn/src/navigation/types.ts
+@@ -5,1 +5,1 @@
+-export type RootStackParamList = {
++export interface RootStackParamList {
+@@ -11,1 +11,1 @@
+-export type MainTabParamList = {
++export interface MainTabParamList {
+@@ -30,1 +30,1 @@
+-    interface RootParamList extends RootStackParamList {}
++    type RootParamList = RootStackParamList
+diff --git a/beLearn/src/components/microlearn/ScreenHeader.tsx b/beLearn/src/components/microlearn/ScreenHeader.tsx
+--- a/beLearn/src/components/microlearn/ScreenHeader.tsx
++++ b/beLearn/src/components/microlearn/ScreenHeader.tsx
+@@ -6,1 +6,1 @@
+-type Props = {
++interface Props {
